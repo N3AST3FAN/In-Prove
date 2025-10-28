@@ -7,19 +7,19 @@ import { PlusCircleIcon } from './common/icons';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const mockTools: Tool[] = [
-    { id: 'T01', name: 'Inserto CNMG', code: 'CNMG120408', supplier: 'Sandvik', category: ToolCategory.INSERT, listPrice: 25, netCost: 18, discount: 28 },
-    { id: 'T02', name: 'Fresa Torica D10', code: 'FRT10R1', supplier: 'Seco', category: ToolCategory.ENDMILL, listPrice: 120, netCost: 90, discount: 25 },
-    { id: 'T03', name: 'Punta D5 HSS', code: 'P5-HSS-G', supplier: 'Guhring', category: ToolCategory.DRILL, listPrice: 15, netCost: 12, discount: 20 },
-    { id: 'T04', name: 'Maschio M8', code: 'M8-6H', supplier: 'Walter', category: ToolCategory.TAP, listPrice: 35, netCost: 28, discount: 20 },
-    { id: 'T05', name: 'Inserto WNMG', code: 'WNMG080408', supplier: 'Iscar', category: ToolCategory.INSERT, listPrice: 22, netCost: 17.6, discount: 20 },
-    { id: 'T06', name: 'Fresa Spianare D50', code: 'FSP50', supplier: 'Mitsubishi', category: ToolCategory.ENDMILL, listPrice: 250, netCost: 187.5, discount: 25 },
+    { id: 'T01', name: 'Inserto CNMG', code: 'CNMG120408', supplier: 'Sandvik', category: ToolCategory.INSERTO_TORNITURA_CNMG, listPrice: 25, netCost: 18, discount: 28 },
+    { id: 'T02', name: 'Fresa Torica D10', code: 'FRT10R1', supplier: 'Seco', category: ToolCategory.FRESA_MD_TORICA, listPrice: 120, netCost: 90, discount: 25 },
+    { id: 'T03', name: 'Punta D5 HSS', code: 'P5-HSS-G', supplier: 'Guhring', category: ToolCategory.PUNTA_HSS_COBALTO, listPrice: 15, netCost: 12, discount: 20 },
+    { id: 'T04', name: 'Maschio M8', code: 'M8-6H', supplier: 'Walter', category: ToolCategory.MASCHIO_DIRITTO_PASSANTE, listPrice: 35, netCost: 28, discount: 20 },
+    { id: 'T05', name: 'Inserto WNMG', code: 'WNMG080408', supplier: 'Iscar', category: ToolCategory.INSERTO_TORNITURA_WNMG, listPrice: 22, netCost: 17.6, discount: 20 },
+    { id: 'T06', name: 'Fresa Spianare D50', code: 'FSP50', supplier: 'Mitsubishi', category: ToolCategory.FRESA_INSERTI_SPIANARE, listPrice: 250, netCost: 187.5, discount: 25 },
 ];
 
 const initialNewToolState: Omit<Tool, 'id'> = {
     name: '',
     code: '',
     supplier: '',
-    category: ToolCategory.OTHER,
+    category: ToolCategory.ALTRO,
     listPrice: 0,
     netCost: 0,
     discount: 0,

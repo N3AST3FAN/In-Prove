@@ -11,7 +11,7 @@ const mockImprovements: Improvement[] = [
     {
         id: 'IMP-001', title: 'Ottimizzazione Finitura Alluminio', author: 'M. Rossi', date: '2023-10-26',
         machine: { id: 'M01', name: 'Tornio A', department: 'Tornitura', costPerMinute: 0.8, hourlyCost: 48, setupTime: 30, workTime: 480, status: 'Operativa' },
-        tool: { id: 'T01', name: 'Inserto CNMG', code: 'CNMG120408', supplier: 'Sandvik', category: ToolCategory.INSERT, listPrice: 25, netCost: 18, discount: 28 },
+        tool: { id: 'T01', name: 'Inserto CNMG', code: 'CNMG120408', supplier: 'Sandvik', category: ToolCategory.INSERTO_TORNITURA_CNMG, listPrice: 25, netCost: 18, discount: 28 },
         before: { process: { toolId: 'T01', machineId: 'M01', cuttingSpeed: 300, feedPerTooth: 0.2, depthOfCut: 1.5, strategy: 'Finitura standard', cycleTime: 12.5 }, cost: { toolCost: 2, machineCostPerMinute: 0.8, totalCost: 12 } },
         after: { process: { toolId: 'T01', machineId: 'M01', cuttingSpeed: 450, feedPerTooth: 0.25, depthOfCut: 1, strategy: 'Finitura High-Feed', cycleTime: 8.2 }, cost: { toolCost: 1.5, machineCostPerMinute: 0.8, totalCost: 8.06 } },
         timeSaving: 4.3, costSaving: 3.94, roi: 250
@@ -19,7 +19,7 @@ const mockImprovements: Improvement[] = [
     {
         id: 'IMP-002', title: 'Sgrossatura Acciaio Inox Veloce', author: 'L. Bianchi', date: '2023-10-22',
         machine: { id: 'M02', name: 'Fresa B', department: 'Fresatura', costPerMinute: 1.2, hourlyCost: 72, setupTime: 60, workTime: 480, status: 'Operativa' },
-        tool: { id: 'T02', name: 'Fresa Torica D10', code: 'FRT10R1', supplier: 'Seco', category: ToolCategory.ENDMILL, listPrice: 120, netCost: 90, discount: 25 },
+        tool: { id: 'T02', name: 'Fresa Torica D10', code: 'FRT10R1', supplier: 'Seco', category: ToolCategory.FRESA_MD_TORICA, listPrice: 120, netCost: 90, discount: 25 },
         before: { process: { toolId: 'T02', machineId: 'M02', cuttingSpeed: 120, feedPerTooth: 0.1, depthOfCut: 8, strategy: 'Tradizionale', cycleTime: 25 }, cost: { toolCost: 15, machineCostPerMinute: 1.2, totalCost: 45 } },
         after: { process: { toolId: 'T02', machineId: 'M02', cuttingSpeed: 180, feedPerTooth: 0.15, depthOfCut: 4, strategy: 'Trocoidale', cycleTime: 15 }, cost: { toolCost: 10, machineCostPerMinute: 1.2, totalCost: 28 } },
         timeSaving: 10, costSaving: 17, roi: 420
@@ -27,7 +27,7 @@ const mockImprovements: Improvement[] = [
     {
         id: 'IMP-003', title: 'Foratura profonda su Titanio', author: 'G. Verdi', date: '2023-09-15',
         machine: { id: 'M03', name: 'Centro Lavoro C', department: 'Fresatura', costPerMinute: 1.5, hourlyCost: 90, setupTime: 90, workTime: 480, status: 'Manutenzione' },
-        tool: { id: 'T03', name: 'Punta D5 HSS', code: 'P5-HSS-G', supplier: 'Guhring', category: ToolCategory.DRILL, listPrice: 15, netCost: 12, discount: 20 },
+        tool: { id: 'T03', name: 'Punta D5 HSS', code: 'P5-HSS-G', supplier: 'Guhring', category: ToolCategory.PUNTA_HSS_COBALTO, listPrice: 15, netCost: 12, discount: 20 },
         before: { process: { toolId: 'T03', machineId: 'M03', cuttingSpeed: 40, feedPerTooth: 0.05, depthOfCut: 20, strategy: 'Standard', cycleTime: 5 }, cost: { toolCost: 1, machineCostPerMinute: 1.5, totalCost: 8.5 } },
         after: { process: { toolId: 'T03', machineId: 'M03', cuttingSpeed: 50, feedPerTooth: 0.08, depthOfCut: 20, strategy: 'Con adduzione interna', cycleTime: 3 }, cost: { toolCost: 0.8, machineCostPerMinute: 1.5, totalCost: 5.3 } },
         timeSaving: 2, costSaving: 3.2, roi: 300
@@ -35,7 +35,7 @@ const mockImprovements: Improvement[] = [
     {
         id: 'IMP-004', title: 'Filettatura M12 su Hardox', author: 'M. Rossi', date: '2023-11-01',
         machine: { id: 'M02', name: 'Fresa B', department: 'Fresatura', costPerMinute: 1.2, hourlyCost: 72, setupTime: 60, workTime: 480, status: 'Operativa' },
-        tool: { id: 'T04', name: 'Maschio M8', code: 'M8-6H', supplier: 'Walter', category: ToolCategory.TAP, listPrice: 35, netCost: 28, discount: 20 },
+        tool: { id: 'T04', name: 'Maschio M8', code: 'M8-6H', supplier: 'Walter', category: ToolCategory.MASCHIO_DIRITTO_PASSANTE, listPrice: 35, netCost: 28, discount: 20 },
         before: { process: { toolId: 'T04', machineId: 'M02', cuttingSpeed: 15, feedPerTooth: 1.75, depthOfCut: 1, strategy: 'Maschiatura', cycleTime: 1.5 }, cost: { toolCost: 0.5, machineCostPerMinute: 1.2, totalCost: 2.3 } },
         after: { process: { toolId: 'T04', machineId: 'M02', cuttingSpeed: 20, feedPerTooth: 1.75, depthOfCut: 1, strategy: 'Interpolazione', cycleTime: 1 }, cost: { toolCost: 0.3, machineCostPerMinute: 1.2, totalCost: 1.5 } },
         timeSaving: 0.5, costSaving: 0.8, roi: 150
@@ -43,7 +43,7 @@ const mockImprovements: Improvement[] = [
      {
         id: 'IMP-005', title: 'Tornitura Inconel', author: 'L. Bianchi', date: '2023-11-05',
         machine: { id: 'M01', name: 'Tornio A', department: 'Tornitura', costPerMinute: 0.8, hourlyCost: 48, setupTime: 30, workTime: 480, status: 'Operativa' },
-        tool: { id: 'T05', name: 'Inserto WNMG', code: 'WNMG080408', supplier: 'Iscar', category: ToolCategory.INSERT, listPrice: 22, netCost: 17.6, discount: 20 },
+        tool: { id: 'T05', name: 'Inserto WNMG', code: 'WNMG080408', supplier: 'Iscar', category: ToolCategory.INSERTO_TORNITURA_WNMG, listPrice: 22, netCost: 17.6, discount: 20 },
         before: { process: { toolId: 'T05', machineId: 'M01', cuttingSpeed: 80, feedPerTooth: 0.1, depthOfCut: 2, strategy: 'Standard', cycleTime: 18 }, cost: { toolCost: 5, machineCostPerMinute: 0.8, totalCost: 19.4 } },
         after: { process: { toolId: 'T05', machineId: 'M01', cuttingSpeed: 110, feedPerTooth: 0.12, depthOfCut: 1.5, strategy: 'Avanzata', cycleTime: 12 }, cost: { toolCost: 4, machineCostPerMinute: 0.8, totalCost: 13.6 } },
         timeSaving: 6, costSaving: 5.8, roi: 180
@@ -154,7 +154,8 @@ const Reports: React.FC = () => {
                         fill="#8884d8"
                         dataKey="value"
                         nameKey="name"
-                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                        // FIX: Explicitly convert `percent` to a number to avoid TS error with arithmetic operations.
+                        label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
                     >
                         {departmentData.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />

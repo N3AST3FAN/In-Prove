@@ -17,9 +17,9 @@ const initialMockMachines: Machine[] = [
 ];
 
 const initialMockTools: Tool[] = [
-    { id: 'T01', name: 'Inserto CNMG', code: 'CNMG120408', supplier: 'Sandvik', category: ToolCategory.INSERT, listPrice: 25, netCost: 18, discount: 28 },
-    { id: 'T02', name: 'Fresa Torica D10', code: 'FRT10R1', supplier: 'Seco', category: ToolCategory.ENDMILL, listPrice: 120, netCost: 90, discount: 25 },
-    { id: 'T03', name: 'Punta D5 HSS', code: 'P5-HSS-G', supplier: 'Guhring', category: ToolCategory.DRILL, listPrice: 15, netCost: 12, discount: 20 },
+    { id: 'T01', name: 'Inserto CNMG', code: 'CNMG120408', supplier: 'Sandvik', category: ToolCategory.INSERTO_TORNITURA_CNMG, listPrice: 25, netCost: 18, discount: 28 },
+    { id: 'T02', name: 'Fresa Torica D10', code: 'FRT10R1', supplier: 'Seco', category: ToolCategory.FRESA_MD_TORICA, listPrice: 120, netCost: 90, discount: 25 },
+    { id: 'T03', name: 'Punta D5 HSS', code: 'P5-HSS-G', supplier: 'Guhring', category: ToolCategory.PUNTA_HSS_COBALTO, listPrice: 15, netCost: 12, discount: 20 },
 ];
 
 const initialProcessData: ProcessData = {
@@ -31,7 +31,7 @@ const initialNewMachineState: Omit<Machine, 'id'> = {
 };
 
 const initialNewToolState: Omit<Tool, 'id'> = {
-    name: '', code: '', supplier: '', category: ToolCategory.OTHER, listPrice: 0, netCost: 0, discount: 0,
+    name: '', code: '', supplier: '', category: ToolCategory.ALTRO, listPrice: 0, netCost: 0, discount: 0,
 };
 
 
