@@ -61,5 +61,8 @@ export interface Machine {
   name: string;
   department: string;
   costPerMinute: number;
+  hourlyCost: number;
+  setupTime: number; // in minutes
+  workTime: number; // in minutes
   status: 'Operativa' | 'Manutenzione' | 'Inattiva';
 }

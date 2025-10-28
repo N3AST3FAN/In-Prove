@@ -1,17 +1,17 @@
 import React, { useState, useMemo } from 'react';
 import Card from './common/Card';
 import Button from './common/Button';
-import type { Page, ProcessData, CostData } from '../types';
+import type { Page, ProcessData, CostData, Machine } from '../types';
 import { ClockIcon, CurrencyEuroIcon } from './common/icons';
 
 interface AddImprovementFormProps {
   setCurrentPage: (page: Page) => void;
 }
 
-const mockMachines = [
-    { id: 'M01', name: 'Tornio A', costPerMinute: 0.8 },
-    { id: 'M02', name: 'Fresa B', costPerMinute: 1.2 },
-    { id: 'M03', name: 'Centro Lavoro C', costPerMinute: 1.5 },
+const mockMachines: Omit<Machine, 'id'>[] = [
+    { name: 'Tornio A', department: 'Tornitura', costPerMinute: 0.8, hourlyCost: 48, setupTime: 30, workTime: 480, status: 'Operativa' },
+    { name: 'Fresa B', department: 'Fresatura', costPerMinute: 1.2, hourlyCost: 72, setupTime: 60, workTime: 480, status: 'Operativa' },
+    { name: 'Centro Lavoro C', department: 'Fresatura', costPerMinute: 1.5, hourlyCost: 90, setupTime: 90, workTime: 480, status: 'Manutenzione' },
 ];
 
 const mockTools = [
@@ -34,7 +34,7 @@ const ProcessInputGroup: React.FC<{
     onProcessChange: (field: keyof (ProcessData & { toolCost?: number }), value: string | number) => void;
 }> = ({ title, processData, onProcessChange }) => {
 
-    const selectedMachine = mockMachines.find(m => m.id === processData.machineId);
+    const selectedMachine = mockMachines.find(m => m.name.includes(processData.machineId.split(' ')[0])); // Simplified matching
     
     return (
         <div className="bg-slate-900/50 p-6 rounded-lg border border-slate-700">
@@ -48,7 +48,7 @@ const ProcessInputGroup: React.FC<{
                         className="mt-1 block w-full bg-slate-800 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                     >
                         <option value="">Seleziona macchina</option>
-                        {mockMachines.map(m => <option key={m.id} value={m.id}>{m.name}</option>)}
+                        {mockMachines.map(m => <option key={m.name} value={m.name}>{m.name}</option>)}
                     </select>
                 </div>
                 <div>
@@ -110,8 +110,8 @@ const AddImprovementForm: React.FC<AddImprovementFormProps> = ({ setCurrentPage 
     const { timeSaving, costSaving } = useMemo(() => {
         const timeSaving = beforeData.cycleTime - afterData.cycleTime;
         
-        const machineBefore = mockMachines.find(m => m.id === beforeData.machineId);
-        const machineAfter = mockMachines.find(m => m.id === afterData.machineId);
+        const machineBefore = mockMachines.find(m => m.name === beforeData.machineId);
+        const machineAfter = mockMachines.find(m => m.name === afterData.machineId);
 
         const costBefore = (beforeData.cycleTime * (machineBefore?.costPerMinute || 0)) + (beforeData.toolCost || 0);
         const costAfter = (afterData.cycleTime * (machineAfter?.costPerMinute || 0)) + (afterData.toolCost || 0);
