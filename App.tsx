@@ -51,7 +51,7 @@ const App: React.FC = () => {
   return (
     <div className="flex h-screen bg-slate-900 text-slate-300 overflow-hidden">
       <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} isOpen={isSidebarOpen} setOpen={setSidebarOpen} />
-      <div className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-20'}`}>
+      <div className="flex-1 flex flex-col transition-all duration-300">
         <Header onLogout={handleLogout} toggleSidebar={() => setSidebarOpen(!isSidebarOpen)} isSidebarOpen={isSidebarOpen}/>
         <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto bg-slate-800/50">
           {renderContent}
